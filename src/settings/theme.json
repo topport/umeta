@@ -3,7 +3,7 @@
 	"followSystemTheme": true,
 	"layout": {
 		"minWidth": 900,
-		"mode": "vertical",
+		"mode": "vertical-mix",
 		"modeList": [
 			{
 				"value": "vertical",
@@ -23,7 +23,7 @@
 			}
 		]
 	},
-	"themeColor": "#1890ff",
+	"themeColor": "#34C759",
 	"themeColorList": [
 		"#1890ff",
 		"#409EFF",
@@ -51,7 +51,7 @@
 		"#546e7a"
 	],
 	"otherColor": {
-		"info": "#0099ad",
+		"info": "#22a146",
 		"success": "#52c41a",
 		"warning": "#faad14",
 		"error": "#f5222d"
@@ -84,7 +84,7 @@
 		"isCache": true
 	},
 	"sider": {
-		"inverted": false,
+		"inverted": true,
 		"width": 220,
 		"collapsedWidth": 64,
 		"mixWidth": 80,

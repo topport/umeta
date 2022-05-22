@@ -12,6 +12,7 @@
     :sider-collapse="app.siderCollapse"
     :add-main-overflow-hidden="addMainOverflowHidden"
     :fixed-footer="theme.footer.fixed"
+    :footer-visible="false"
   >
     <template #header>
       <global-header v-bind="headerProps" />
@@ -31,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-//import AdminLayout from '@soybeanjs/vue-admin-layout';
+// import AdminLayout from '@soybeanjs/vue-admin-layout';
 import { useAppStore, useThemeStore } from '@/store';
 import { useBasicLayout } from '@/composables';
 import { useBoolean } from '@/hooks';

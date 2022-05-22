@@ -7,7 +7,10 @@
       class="drawer-shadow absolute-lt flex-col-stretch h-full nowrap-hidden"
       :style="{ width: showDrawer ? theme.sider.mixChildMenuWidth + 'px' : '0px' }"
     >
-      <header class="header-height flex-y-center justify-between" :style="{ height: theme.header.height + 'px' }">
+      <header
+        class="header-height flex-y-center justify-between bottom-border"
+        :style="{ height: theme.header.height + 'px' }"
+      >
         <h2 class="text-primary pl-8px text-16px font-bold">{{ title }}</h2>
         <div class="px-8px text-16px text-gray-600 cursor-pointer" @click="app.toggleMixSiderFixed">
           <icon-mdi-pin-off v-if="app.mixSiderFixed" />
@@ -75,6 +78,13 @@ watch(
 </script>
 <style scoped>
 .drawer-shadow {
-  box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);
+  /*box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);*/
+
+  border-right: 1px solid #e6e6e6;
+}
+
+.bottom-border {
+  /*box-shadow: 0 1px 2px rgb(0 21 41 / 8%);*/
+  border-bottom: 1px solid #e6e6e6;
 }
 </style>
