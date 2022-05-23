@@ -51,7 +51,7 @@ export default class CustomAxiosInstance {
           handleConfig.data = await transformRequestData(handleConfig.data, contentType);
           // 设置token
           const user = getUserInfo();
-          console.log(user);
+
           handleConfig.headers.Authorization = getToken();
           handleConfig.headers['x-token'] = getToken();
           handleConfig.headers['x-user-id'] = user.ID;

@@ -2,21 +2,6 @@
 	"code": 0,
 	"data": {
 
-{
-	name: 'dashboard',
-	path: '/dashboard',
-	component: 'basic',
-	children: [
-		{
-			name: 'dashboard_analysis',
-			path: '/dashboard/analysis',
-			component: 'self',
-			meta: {
-				title: '分析页',
-				requiresAuth: true,
-				icon: 'icon-park-outline:analysis'
-			}
-		},
 
 
 

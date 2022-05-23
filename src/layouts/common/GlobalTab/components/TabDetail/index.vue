@@ -28,10 +28,10 @@
 <script setup lang="ts">
 import { ref, reactive, computed, nextTick, watch } from 'vue';
 import { useEventListener } from '@vueuse/core';
-import { ChromeTab, ButtonTab } from '@/components/tab';
 import { Icon } from '@iconify/vue';
 import { useThemeStore, useTabStore } from '@/store';
 import { setTabRoutes } from '@/utils';
+import { ChromeTab, ButtonTab } from '@/components/tab';
 import { ContextMenu } from './components';
 
 interface Emits {

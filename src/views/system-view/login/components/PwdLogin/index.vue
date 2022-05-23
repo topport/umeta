@@ -16,7 +16,7 @@
       </div>
     </n-form-item>
     <n-space :vertical="true" :size="24">
-      <div class="flex-y-center justify-between">
+      <div class="justify-between flex-y-center">
         <n-checkbox v-model:checked="rememberMe">记住我</n-checkbox>
         <n-button :text="true" @click="toLoginModule('reset-pwd')">忘记密码？</n-button>
       </div>
@@ -30,7 +30,7 @@
       >
         确定
       </n-button>
-      <div class="flex-y-center justify-between">
+      <div class="justify-between flex-y-center">
         <n-button class="flex-1" :block="true" @click="toLoginModule('code-login')">
           {{ EnumLoginModule['code-login'] }}
         </n-button>
@@ -51,7 +51,7 @@ import { EnumLoginModule } from '@/enum';
 import { useAuthStore } from '@/store';
 import { useRouterPush } from '@/composables';
 import { captcha } from '@/service';
-import { formRules } from '@/utils';
+// import { formRules } from '@/utils';
 import { OtherAccount } from './components';
 
 const auth = useAuthStore();
@@ -68,23 +68,25 @@ const model = reactive({
 });
 
 // 验证函数
-const checkusername = (rule, value, callback) => {
+// eslint-disable-next-line consistent-return
+const checkusername = (rule: any, value: string | any[], callback: (arg0: Error | undefined) => void) => {
   if (value.length < 5) {
     return callback(new Error('请输入正确的用户名'));
   }
-  callback();
+  callback(undefined);
 };
-const checkPassword = (rule, value, callback) => {
+// eslint-disable-next-line consistent-return
+const checkPassword = (rule: any, value: string | any[], callback: (arg0: Error | undefined) => void) => {
   if (value.length < 6) {
     return callback(new Error('请输入正确的密码'));
   }
-  callback();
+  callback(undefined);
 };
 
 // 获取验证码
 const loginVerify = async () => {
   const ele = await captcha({});
-  console.log(model);
+  // console.log(model);
   // rules.captcha[1].max = ele.data.captchaLength;
   // rules.captcha[1].min = ele.data.captchaLength;
   picPath.value = ele.data.picPath;
@@ -105,13 +107,12 @@ function handleSubmit(e: MouseEvent) {
 
   formRef.value.validate(errors => {
     if (!errors) {
-      const { username, password } = model;
       login(model);
     }
   });
 }
 
-function handleLoginOtherAccount(param: { username: string; password: string }) {
+function handleLoginOtherAccount() {
   // const { username, password } = param;
   login(model);
 }

@@ -60,8 +60,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue-demi';
-import { LayoutHeader, LayoutTab, LayoutSider, LayoutContent, LayoutFooter } from './components';
 import { useCssRender, useFixedTransformStyle } from '../../hooks/layout';
+import { LayoutHeader, LayoutTab, LayoutSider, LayoutContent, LayoutFooter } from './components';
 
 interface Props {
   /** 布局模式 */

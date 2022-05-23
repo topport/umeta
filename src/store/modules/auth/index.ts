@@ -84,7 +84,7 @@ export const useAuthStore = defineStore('auth-store', {
       setToken(token);
       user.userId = user.ID;
       user.userRole = 'super';
-      console.log(user);
+      // console.log(user);
       // setRefreshToken(refreshToken);
       setUserInfo(user);
       this.userInfo = user;

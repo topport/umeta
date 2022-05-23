@@ -18,9 +18,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { CssRender } from 'css-render';
-import { IconClose } from './components';
-import { useBoolean } from '@/hooks/layout';
 import { addColorAlpha } from '@/utils';
+import { useBoolean } from '@/hooks/layout';
+import { IconClose } from './components';
 
 interface Props {
   /** 暗黑模式 */

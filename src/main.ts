@@ -19,7 +19,7 @@ async function setupApp() {
   setupDirectives(app);
 
   // vue router
-  // @ts-ignore
+
   await setupRouter(app);
   app.component('AdminLayout', AdminLayout);
   // mount app
