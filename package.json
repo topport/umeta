@@ -1,5 +1,5 @@
 {
-  "name": "soybean-admin",
+  "name": "umeta",
   "version": "0.9.4",
   "scripts": {
     "dev": "cross-env VITE_ENV_TYPE=dev vite",
