@@ -33,6 +33,7 @@ export function createRequest(axiosConfig: AxiosRequestConfig, backendConfig?: S
     const { url } = param;
     const method = param.method || 'get';
     const { instance } = customInstance;
+
     const res = (await getRequestResponse(
       instance,
       method,
@@ -56,8 +57,8 @@ export function createRequest(axiosConfig: AxiosRequestConfig, backendConfig?: S
   /**
    * post请求
    * @param url - 请求地址
-   * @param data - 请求的body的data
-   * @param config - axios配置
+   * @param data?? - 请求的body的data
+   * @param config?? - axios配置
    */
   function post<T>(url: string, data?: any, config?: AxiosRequestConfig) {
     return asyncRequest<T>({ url, method: 'post', data, axiosConfig: config });

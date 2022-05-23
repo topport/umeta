@@ -1,0 +1,73 @@
+{
+	"code": 0,
+	"data": {
+		"user": {
+			"ID": 1,
+			"CreatedAt": "2022-05-16T17:36:30.682+08:00",
+			"UpdatedAt": "2022-05-17T17:29:33.602+08:00",
+			"uuid": "4b3ae7ef-769b-4854-a004-bb5d2c9de91a",
+			"userName": "admin",
+			"nickName": "超级管理员",
+			"sideMode": "dark",
+			"headerImg": "https://qmplusimg.henrongyi.top/gva_header.jpg",
+			"baseColor": "#fff",
+			"activeColor": "#1890ff",
+			"authorityId": "888",
+			"authority": {
+				"CreatedAt": "2022-05-16T17:36:30.39+08:00",
+				"UpdatedAt": "2022-05-16T17:36:30.779+08:00",
+				"DeletedAt": null,
+				"authorityId": "888",
+				"authorityName": "普通用户",
+				"parentId": "0",
+				"dataAuthorityId": null,
+				"children": null,
+				"menus": null,
+				"defaultRouter": "dashboard"
+			},
+			"authorities": [
+				{
+					"CreatedAt": "2022-05-16T17:36:30.39+08:00",
+					"UpdatedAt": "2022-05-16T17:36:30.779+08:00",
+					"DeletedAt": null,
+					"authorityId": "888",
+					"authorityName": "普通用户",
+					"parentId": "0",
+					"dataAuthorityId": null,
+					"children": null,
+					"menus": null,
+					"defaultRouter": "dashboard"
+				},
+				{
+					"CreatedAt": "2022-05-16T17:36:30.39+08:00",
+					"UpdatedAt": "2022-05-16T17:36:30.839+08:00",
+					"DeletedAt": null,
+					"authorityId": "8881",
+					"authorityName": "普通用户子角色",
+					"parentId": "888",
+					"dataAuthorityId": null,
+					"children": null,
+					"menus": null,
+					"defaultRouter": "dashboard"
+				},
+				{
+					"CreatedAt": "2022-05-16T17:36:30.39+08:00",
+					"UpdatedAt": "2022-05-16T17:36:30.8+08:00",
+					"DeletedAt": null,
+					"authorityId": "9528",
+					"authorityName": "测试角色",
+					"parentId": "0",
+					"dataAuthorityId": null,
+					"children": null,
+					"menus": null,
+					"defaultRouter": "dashboard"
+				}
+			],
+			"phone": "17611111111",
+			"email": "333333333@qq.com"
+		},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVVUlEIjoiNGIzYWU3ZWYtNzY5Yi00ODU0LWEwMDQtYmI1ZDJjOWRlOTFhIiwiSUQiOjEsIlVzZXJuYW1lIjoiYWRtaW4iLCJOaWNrTmFtZSI6Iui2hee6p-euoeeQhuWRmCIsIkF1dGhvcml0eUlkIjoiODg4IiwiQnVmZmVyVGltZSI6ODY0MDAsImV4cCI6MTY1Mzg0NzU3MiwiaXNzIjoicW1QbHVzIiwibmJmIjoxNjUzMjQxNzcyfQ.HNSu1_I_xHrirBp3qZpQQczRewAd5Qh9JGYnfyRNYLs",
+		"expiresAt": 1653847572000
+	},
+	"msg": "登录成功"
+}

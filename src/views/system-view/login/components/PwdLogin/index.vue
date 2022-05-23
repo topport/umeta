@@ -1,10 +1,19 @@
 <template>
   <n-form ref="formRef" :model="model" :rules="rules" size="large" :show-label="false">
-    <n-form-item path="userName">
-      <n-input v-model:value="model.userName" placeholder="请输入用户名" />
+    <n-form-item path="username">
+      <n-input v-model:value="model.username" placeholder="请输入用户名" />
     </n-form-item>
     <n-form-item path="password">
       <n-input v-model:value="model.password" type="password" show-password-on="click" placeholder="请输入密码" />
+    </n-form-item>
+
+    <n-form-item path="captcha">
+      <div class="vPicBox">
+        <n-input v-model:value="model.captcha" placeholder="请输入验证码" style="width: 60%" />
+        <div class="vPic">
+          <img v-if="picPath" :src="picPath" alt="请输入验证码" @click="loginVerify()" />
+        </div>
+      </div>
     </n-form-item>
     <n-space :vertical="true" :size="24">
       <div class="flex-y-center justify-between">
@@ -41,20 +50,52 @@ import type { FormInst, FormRules } from 'naive-ui';
 import { EnumLoginModule } from '@/enum';
 import { useAuthStore } from '@/store';
 import { useRouterPush } from '@/composables';
+import { captcha } from '@/service';
 import { formRules } from '@/utils';
 import { OtherAccount } from './components';
 
 const auth = useAuthStore();
 const { login } = useAuthStore();
 const { toLoginModule } = useRouterPush();
+const picPath = ref('');
 
 const formRef = ref<(HTMLElement & FormInst) | null>(null);
 const model = reactive({
-  userName: 'Soybean',
-  password: 'soybean123'
+  username: 'admin',
+  password: '123456',
+  captcha: '',
+  captchaId: ''
 });
+
+// 验证函数
+const checkusername = (rule, value, callback) => {
+  if (value.length < 5) {
+    return callback(new Error('请输入正确的用户名'));
+  }
+  callback();
+};
+const checkPassword = (rule, value, callback) => {
+  if (value.length < 6) {
+    return callback(new Error('请输入正确的密码'));
+  }
+  callback();
+};
+
+// 获取验证码
+const loginVerify = async () => {
+  const ele = await captcha({});
+  console.log(model);
+  // rules.captcha[1].max = ele.data.captchaLength;
+  // rules.captcha[1].min = ele.data.captchaLength;
+  picPath.value = ele.data.picPath;
+  model.captchaId = ele.data.captchaId;
+};
+loginVerify();
 const rules: FormRules = {
-  password: formRules.pwd
+  // password: formRules.pwd
+  username: [{ validator: checkusername, trigger: 'blur' }],
+  password: [{ validator: checkPassword, trigger: 'blur' }],
+  captcha: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
 };
 const rememberMe = ref(false);
 
@@ -64,15 +105,15 @@ function handleSubmit(e: MouseEvent) {
 
   formRef.value.validate(errors => {
     if (!errors) {
-      const { userName, password } = model;
-      login(userName, password);
+      const { username, password } = model;
+      login(model);
     }
   });
 }
 
-function handleLoginOtherAccount(param: { userName: string; password: string }) {
-  const { userName, password } = param;
-  login(userName, password);
+function handleLoginOtherAccount(param: { username: string; password: string }) {
+  // const { username, password } = param;
+  login(model);
 }
 </script>
 <style scoped></style>

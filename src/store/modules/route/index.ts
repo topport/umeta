@@ -80,8 +80,8 @@ export const useRouteStore = defineStore('route-store', {
       const { userId } = getUserInfo();
       const { data } = await fetchUserRoutes(userId);
       if (data) {
-        this.routeHomeName = data.home;
-        this.handleAuthRoutes(data.routes);
+        this.routeHomeName = 'document';
+        this.handleAuthRoutes(data.menus);
       }
     },
     /** 初始化静态路由 */

@@ -3,6 +3,7 @@ import type { AxiosRequestConfig, AxiosInstance, AxiosError } from 'axios';
 import { REFRESH_TOKEN_CODE } from '@/config';
 import {
   getToken,
+  getUserInfo,
   transformRequestData,
   handleAxiosError,
   handleResponseError,
@@ -30,8 +31,8 @@ export default class CustomAxiosInstance {
     backendConfig: Service.BackendResultConfig = {
       codeKey: 'code',
       dataKey: 'data',
-      msgKey: 'message',
-      successCode: 200
+      msgKey: 'msg',
+      successCode: 0
     }
   ) {
     this.backendConfig = backendConfig;
@@ -49,7 +50,20 @@ export default class CustomAxiosInstance {
           const contentType = handleConfig.headers['Content-Type'] as string;
           handleConfig.data = await transformRequestData(handleConfig.data, contentType);
           // 设置token
+          const user = getUserInfo();
+          console.log(user);
           handleConfig.headers.Authorization = getToken();
+          handleConfig.headers['x-token'] = getToken();
+          handleConfig.headers['x-user-id'] = user.ID;
+          // handleConfig.headers.Authorization = getToken();
+          //
+          // const userStore = useUserStore()
+          // config.headers = {
+          // 	'Content-Type': 'application/json',
+          // 	'x-token': userStore.token,
+          // 	'x-user-id': userStore.userInfo.ID,
+          // 	...config.headers
+          // }
         }
         return handleConfig;
       },

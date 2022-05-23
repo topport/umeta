@@ -15,6 +15,6 @@ export function createViteProxy(isOpenProxy: boolean, envConfig: EnvConfig) {
       rewrite: path => path.replace(new RegExp(`^${envConfig.proxy}`), '')
     }
   };
-
+  // console.log(proxy);
   return proxy;
 }

@@ -80,6 +80,41 @@ export const useAuthStore = defineStore('auth-store', {
       let successFlag = false;
 
       // 先把token存储到缓存中(后面接口的请求头需要token)
+      const { token, user } = backendToken;
+      setToken(token);
+      user.userId = user.ID;
+      user.userRole = 'super';
+      console.log(user);
+      // setRefreshToken(refreshToken);
+      setUserInfo(user);
+      this.userInfo = user;
+      this.token = token;
+
+      successFlag = true;
+      // // 获取用户信息
+      // const { data } = await fetchUserInfo();
+      // if (data) {
+      //   // 成功后把用户信息存储到缓存中
+      //   setUserInfo(data);
+      //
+      //   // 更新状态
+      //   this.userInfo = data;
+      //   this.token = token;
+      //
+      //   successFlag = true;
+      // }
+
+      return successFlag;
+    },
+
+    /**
+     * 根据token进行登录
+     * @param backendToken - 返回的token
+     */
+    async loginByToken1(backendToken: ApiAuth.Token) {
+      let successFlag = false;
+
+      // 先把token存储到缓存中(后面接口的请求头需要token)
       const { token, refreshToken } = backendToken;
       setToken(token);
       setRefreshToken(refreshToken);
@@ -104,9 +139,9 @@ export const useAuthStore = defineStore('auth-store', {
      * @param userName - 用户名
      * @param password - 密码
      */
-    async login(userName: string, password: string) {
+    async login(loginInfo) {
       this.loginLoading = true;
-      const { data } = await fetchLogin(userName, password);
+      const { data } = await fetchLogin(loginInfo);
       if (data) {
         await this.handleActionAfterLogin(data);
       }
